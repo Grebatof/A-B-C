@@ -10,14 +10,19 @@
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Мир!"
+        android:text="equal!"
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/passStringToNextActivity"
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="To Activity C"
-        android:onClick="passStringToNextActivity" />
+        android:text="To Activity C" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Activity A" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
