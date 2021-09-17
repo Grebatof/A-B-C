@@ -11,32 +11,29 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val ARG_FIRST = "arg_first"
-    }
+    var editText: EditText? = null
+    var button: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val editText: EditText = findViewById(R.id.editText)
-        val button: Button = findViewById(R.id.button)
+        editText = findViewById(R.id.editText)
+        button = findViewById(R.id.button)
 
-        button.setOnClickListener {
-            val nextActivityIntent = Intent(this, BActivity::class.java)
-            val str = editText.text.toString()
+        button?.setOnClickListener {
+            val str = editText?.text.toString()
 
-            nextActivityIntent.putExtra(BActivity.ARG_SECOND, str)
-            startActivityForResult(nextActivityIntent, 404)
+            startActivityForResult(BActivity.getIntent(this, str), 404)
         }
     }
 
-    @SuppressLint("MissingSuperCall")
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
         data: Intent?
     ) {
+        super.onActivityResult(requestCode, resultCode, data)
         Toast.makeText(this, "Убит B", Toast.LENGTH_SHORT).show()
     }
 }
